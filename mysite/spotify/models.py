@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
 
@@ -20,23 +22,41 @@ class Account(models.Model):
     name = models.CharField(max_length=20)
     surname = models.CharField(max_length=20)
     phone = models.CharField(max_length=12)
-    last_payment_date = models.DateField(null=True, blank=True, auto_now_add=True)
-    next_payment_date = models.DateField(null=True, blank=True, auto_now_add=True)
-    acc_sub_type = models.ForeignKey(AccountSubType, on_delete=models.CASCADE)
+    last_payment_date = models.DateField(null=True, blank=True, editable=False)
+    next_payment_date = models.DateField(null=True, blank=True, editable=False)
+    acc_sub_type = models.ForeignKey(AccountSubType, on_delete=models.CASCADE, null=False, blank=False)
+
+
+    def save(self, *args, **kwargs):
+        if self.acc_sub_type_id is not None:
+            if self.acc_sub_type.type_description == "Free":
+                self.last_payment_date = None
+                self.next_payment_date = None
+            else:
+                today = date.today()
+                self.last_payment_date = today
+                next_month = today + relativedelta(months=1)
+                self.next_payment_date = next_month
+
+            super().save(*args, **kwargs)
 
     def __str__(self):
         return self.username
 
-    def save(self, *args, **kwargs):
-        if self.acc_sub_type.type_description == "Free":
-            self.last_payment_date = None
-            self.next_payment_date = None
-        else:
-            today = date.today()
-            self.last_payment_date = today
-            self.next_payment_date = today + relativedelta(months=1)
+@receiver(post_save, sender=Account)
+def update_payment_dates(sender, instance, created, **kwargs):
+    def update_payment_dates(sender, instance, created, **kwargs):
+        if created:
+            if instance.acc_sub_type.type_description == "Free":
+                instance.last_payment_date = None
+                instance.next_payment_date = None
+            else:
+                today = date.today()
+                instance.last_payment_date = today
+                next_month = today + relativedelta(months=1)
+                instance.next_payment_date = next_month
+            instance.save(update_fields=['last_payment_date', 'next_payment_date'])
 
-        super().save(*args, **kwargs)
 
 class Artist(models.Model):
     artist_id = models.AutoField(primary_key=True)

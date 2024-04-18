@@ -1,20 +1,9 @@
-from mysite.spotify.models import Account
+# import packages
+from datetime import date
+from dateutil.relativedelta import relativedelta
 
-print(Account.objects.all())
-
-
-# Získání účtu s ID 2
-account = Account.objects.get(pk=2)
-print()
-# Vypsání všech informací o účtu
-print("Account ID:", account.account_id)
-print("Username:", account.username)
-print("Email:", account.email)
-print("Password:", account.password)
-print("Creation Date:", account.creation_date)
-print("Name:", account.name)
-print("Surname:", account.surname)
-print("Phone:", account.phone)
-print("Last Payment Date:", account.last_payment_date)
-print("Next Payment Date:", account.next_payment_date)
-print("Account Subtype:", account.acc_sub_type)
+# adding months to a particular date
+today = date.today()
+print('date : ' + str(today))
+new_date = today + relativedelta(months=1)
+print('new date is : ' + str(new_date))
