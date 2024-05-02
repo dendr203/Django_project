@@ -1,5 +1,15 @@
 from django.contrib import admin
-from .models import AccountSubType, Account, Artist, Category, Playlist, Album, Song, AccountFollowedAlbums, SongsInPlaylists, AccountFollowedPlaylists, AccountFollowedArtists
+from .models import (AccountSubType,
+                     Account,
+                     Artist,
+                     Category,
+                     Playlist,
+                     Album,
+                     Song,
+                     AccountFollowedAlbums,
+                     SongsInPlaylists,
+                     AccountFollowedPlaylists,
+                     AccountFollowedArtists)
 
 admin.site.register(AccountSubType)
 #admin.site.register(Account)
@@ -12,6 +22,7 @@ admin.site.register(AccountFollowedAlbums)
 admin.site.register(SongsInPlaylists)
 admin.site.register(AccountFollowedPlaylists)
 admin.site.register(AccountFollowedArtists)
+
 
 @admin.register(Account)
 class AccountAdmin(admin.ModelAdmin):

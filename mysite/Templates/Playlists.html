@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}Playlisty - Spotify{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h2>Playlisty</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Název playlistu</th>
+                    <th>Poznámka playlistu</th>
+                    <th>Kategorie</th>
+                    <th>Vytvořeno účtem</th>
+                    <th>Datum vytvoření playlistu</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for playlist in playlists %}
+                <tr>
+                    <td>{{ playlist.playlist_id }}</td>
+                    <td>{{ playlist.playlist_name }}</td>
+                    <td>{{ playlist.playlist_note }}</td>
+                    <td>{{ playlist.playlist_category }}</td>
+                    <td>{{ playlist.creator_account.username }}</td>
+                    <td>{{ playlist.playlist_create_date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

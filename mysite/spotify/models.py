@@ -3,11 +3,12 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
+from django.core.validators import MinValueValidator
 
 
 class AccountSubType(models.Model):
     sub_type_id = models.AutoField(primary_key=True)
-    type_fee = models.DecimalField(max_digits=4, decimal_places=2)
+    type_fee = models.DecimalField(max_digits=4, decimal_places=2, validators=[MinValueValidator(0)])
     type_description = models.CharField(max_length=20)
 
     def __str__(self):
@@ -16,7 +17,7 @@ class AccountSubType(models.Model):
 class Account(models.Model):
     account_id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=30)
-    email = models.CharField(max_length=20)
+    email = models.EmailField(max_length=20)
     password = models.CharField(max_length=12)
     creation_date = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=20)
@@ -45,17 +46,16 @@ class Account(models.Model):
 
 @receiver(post_save, sender=Account)
 def update_payment_dates(sender, instance, created, **kwargs):
-    def update_payment_dates(sender, instance, created, **kwargs):
-        if created:
-            if instance.acc_sub_type.type_description == "Free":
-                instance.last_payment_date = None
-                instance.next_payment_date = None
-            else:
-                today = date.today()
-                instance.last_payment_date = today
-                next_month = today + relativedelta(months=1)
-                instance.next_payment_date = next_month
-            instance.save(update_fields=['last_payment_date', 'next_payment_date'])
+    if created:
+        if instance.acc_sub_type.type_description == "Free":
+            instance.last_payment_date = None
+            instance.next_payment_date = None
+        else:
+            today = date.today()
+            instance.last_payment_date = today
+            next_month = today + relativedelta(months=1)
+            instance.next_payment_date = next_month
+        instance.save(update_fields=['last_payment_date', 'next_payment_date'])
 
 
 class Artist(models.Model):
@@ -70,8 +70,6 @@ class Artist(models.Model):
 class Category(models.Model):
     category_id = models.AutoField(primary_key=True)
     category_name = models.CharField(max_length=20)
-    category_song_count = models.IntegerField(null=True, blank=True)
-    category_playlist_count = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.category_name
@@ -81,7 +79,8 @@ class Playlist(models.Model):
     playlist_name = models.CharField(max_length=30)
     playlist_create_date = models.DateTimeField(auto_now_add=True)
     playlist_note = models.CharField(max_length=30, null=True, blank=True)
-    playlist_category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+    playlist_category = models.ForeignKey(Category, on_delete=models.CASCADE, null=False, default=None)
+    creator_account = models.ForeignKey(Account, on_delete=models.CASCADE, null=False, default=None)
 
     def __str__(self):
         return self.playlist_name
@@ -90,8 +89,6 @@ class Album(models.Model):
     album_id = models.AutoField(primary_key=True)
     album_release_date = models.DateField()
     album_name = models.CharField(max_length=30)
-    album_length = models.IntegerField(null=True, blank=True)
-    album_song_count = models.IntegerField(null=True, blank=True)
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -100,8 +97,7 @@ class Album(models.Model):
 class Song(models.Model):
     song_id = models.AutoField(primary_key=True)
     song_name = models.CharField(max_length=30)
-    song_length = models.IntegerField()
-    song_played_count = models.IntegerField(null=True, blank=True)
+    song_length = models.DurationField(validators=[MinValueValidator(timedelta(seconds=1))], default='00:00:01')
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
