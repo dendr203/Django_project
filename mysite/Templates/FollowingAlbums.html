@@ -1,0 +1,37 @@
+{% extends "UserLayout.html" %}
+
+{% block title %}Uživatelé - Spotify{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h2>Vaše sledované alba:</h2>
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Název</th>
+                <th scope="col">Od umělce</th>
+                <th scope="col">Datum vydání</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for followingalbums in followingAlbums %}
+            <tr>
+                <td>{{ followingalbums.album.album_name }}</td>
+                <td>{{ followingalbums.album.artist.artist_name }}</td>
+                <td>{{ followingalbums.album.album_release_date|date:"Y-m-d" }}</td>
+                <td>
+                <form action="{% url 'unfollowAlbum' followingalbums.album.album_id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Přestat sledovat</button>
+                </form>
+            </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="#" class="btn btn-secondary btn-lg btn-block">Začít sledovat nové album</a>
+    </div>
+</div>
+{% endblock %}

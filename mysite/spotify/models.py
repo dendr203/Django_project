@@ -26,7 +26,7 @@ class Account(models.Model):
     last_payment_date = models.DateField(null=True, blank=True, editable=False)
     next_payment_date = models.DateField(null=True, blank=True, editable=False)
     acc_sub_type = models.ForeignKey(AccountSubType, on_delete=models.CASCADE, null=False, blank=False)
-
+    last_login = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
         if self.acc_sub_type_id is not None:

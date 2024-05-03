@@ -21,9 +21,14 @@ from spotify import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('accounts', views.Accounts, name='accounts'),
-    path('playlists', views.Playlists, name='playlists'),
-    path('artists', views.Artists, name='artists'),
-    path('Albums', views.Albums, name='albums'),
-    path('Songs', views.Songs, name='songs')
+    path('index', views.index, name='index'),
+    path('userLogin', views.userLogin, name='userLogin'),
+    path('userAccount', views.userAccount, name='userAccount'),
+    path('deletePlaylist/<int:playlist_id>', views.deletePlaylist, name='deletePlaylist'),
+    path('createPlaylist', views.createPlaylist, name='createPlaylist'),
+    path('followingPlaylists', views.followingPlaylists, name='followingPlaylists'),
+    path('unfollowPlaylist/<int:playlist_id>', views.unfollowPlaylist, name='unfollowPlaylist'),
+    path('followPlaylist/<int:playlist_id>', views.followPlaylist, name='followPlaylist'),
+    path('followingAlbums', views.followingAlbums, name='followingAlbums'),
+    path('unfollowAlbum/<int:album_id>', views.unfollowAlbum, name='unfollowAlbum')
 ]
