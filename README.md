@@ -5,11 +5,13 @@ Tento projekt je webová aplikace inspirovaná Spotify, která umožňuje uživa
 ## Jak spustit aplikaci
 
 1. **Instalace závislostí:**
-   Nejprve si nainstalujte všechny potřebné závislosti pomocí příkazu: pip install -r requirements.txt
+   Nejprve si nainstalujte všechny potřebné závislosti pomocí příkazu:
+   pip install -r requirements.txt
   
 
-2. **Spuštění aplikace:**
-Po instalaci závislostí spusťte aplikaci pomocí následujícího příkazu: python manage.py runserver
+3. **Spuštění aplikace:**
+Po instalaci závislostí spusťte aplikaci pomocí následujícího příkazu:
+python manage.py runserver
 
 
 Aplikace bude nyní dostupná na adrese [http://localhost:8000/](http://localhost:8000/).
