@@ -4,26 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecb8ac23-a251-45e0-b87f-1f854d7103ab" name="Changes" comment="Reg user can do everything now">
-      <change afterPath="$PROJECT_DIR$/mysite/Templates/About_account.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/Templates/About_index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/Templates/CreateAccount.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/Templates/FollowNewAlbum.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/Templates/FollowNewPlaylist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/Templates/CreatePlaylist.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/Templates/CreatePlaylist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/Templates/FollowingAlbums.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/Templates/FollowingAlbums.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/Templates/FollowingPlaylists.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/Templates/FollowingPlaylists.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/Templates/UserAccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/Templates/UserAccount.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/Templates/UserLayout.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/Templates/UserLayout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/Templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/Templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/Templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/Templates/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mysite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mysite/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/spotify/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/spotify/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/spotify/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/spotify/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/spotify/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/spotify/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="ecb8ac23-a251-45e0-b87f-1f854d7103ab" name="Changes" comment="Completed" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -168,7 +149,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714819917680</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Completed">
+      <option name="closed" value="true" />
+      <created>1714824189731</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1714824189731</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -177,6 +166,7 @@
     <MESSAGE value="All tables are now displaying on web" />
     <MESSAGE value="Mostly done&#10;chybí jen dodělat sledování playlistů a alb" />
     <MESSAGE value="Reg user can do everything now" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reg user can do everything now" />
+    <MESSAGE value="Completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed" />
   </component>
 </project>
