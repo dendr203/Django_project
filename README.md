@@ -1,6 +1,6 @@
 # Spotify Projekt
 
-Tento projekt je webová aplikace inspirovaná Spotify, která umožňuje uživatelům streamovat hudbu, vytvářet playlisty a sledovat oblíbené interprety a alba.
+Tento projekt je webová aplikace inspirovaná Spotify, která umožňuje uživatelům vytvářet playlisty, sledovat ostatní playlsity a oblíbené alba.
 
 ## Jak spustit aplikaci
 
@@ -16,14 +16,13 @@ Aplikace bude nyní dostupná na adrese [http://localhost:8000/](http://localhos
 
 ## Funkce aplikace
 
-- **Streamování hudby:** Uživatelé mohou poslouchat miliony skladeb online.
 - **Vytváření playlistů:** Možnost vytvářet vlastní playlisty a sdílet je s přáteli.
 - **Sledování oblíbených playlistů a alb:** Uživatelé mohou sledovat své oblíbené interprety a alba a dostávat aktualizace o nových releasích.
 
 ## Použité technologie
 
 - Python/Django pro backend
-- HTML/CSS/JavaScript pro frontend
+- HTML pro frontend
 - Bootstrap framework pro responzivní design
 
 ## Autoři
