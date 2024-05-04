@@ -29,4 +29,4 @@ Aplikace bude nyní dostupná na adrese [http://localhost:8000/](http://localhos
 
 ## Autoři
 
-Tento projekt byl vytvořen jako součást školního projektu. Autoři jsou [Vaše Jméno](odkaz-na-profil) a [Další Autor](odkaz-na-profil).
+Tento projekt byl vytvořen jako součást školního projektu. Autoři jsou [Daniel Hoďák](https://github.com/dendr203).
