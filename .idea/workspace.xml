@@ -4,21 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecb8ac23-a251-45e0-b87f-1f854d7103ab" name="Changes" comment="Everything works now">
-      <change afterPath="$PROJECT_DIR$/mysite/Templates/Accounts.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/Templates/Albums.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/Templates/Artists.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/Templates/Playlists.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/Templates/Songs.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/Templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysite/Templates/layout.html" afterDir="false" />
+    <list default="true" id="ecb8ac23-a251-45e0-b87f-1f854d7103ab" name="Changes" comment="Mostly done&#10;chybí jen dodělat sledování playlistů a alb">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/Templates/FollowingAlbums.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/Templates/FollowingAlbums.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/Templates/FollowingPlaylists.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/Templates/FollowingPlaylists.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mysite/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/mysite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mysite/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/spotify/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/spotify/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/spotify/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/spotify/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/spotify/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/spotify/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,16 +58,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Python.main.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Danek/Downloads/djangoProject",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python.main.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Danek/Downloads/djangoProject&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Django_project" />
@@ -141,12 +132,30 @@
       <option name="project" value="LOCAL" />
       <updated>1713451666741</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="All tables are now displaying on web">
+      <option name="closed" value="true" />
+      <created>1714679010314</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1714679010314</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Mostly done&#10;chybí jen dodělat sledování playlistů a alb">
+      <option name="closed" value="true" />
+      <created>1714747825764</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1714747825764</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Most works" />
     <MESSAGE value="Everything works now" />
-    <option name="LAST_COMMIT_MESSAGE" value="Everything works now" />
+    <MESSAGE value="All tables are now displaying on web" />
+    <MESSAGE value="Mostly done&#10;chybí jen dodělat sledování playlistů a alb" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mostly done&#10;chybí jen dodělat sledování playlistů a alb" />
   </component>
 </project>

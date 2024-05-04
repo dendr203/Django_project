@@ -8,28 +8,28 @@
         <h2>Vaše sledované playlisty:</h2>
         <table class="table">
             <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Název</th>
-                    <th scope="col">Poznámka</th>
-                    <th scope="col">Kategorie</th>
-                    <th scope="col">Datum a čas vytvoření</th>
-                    <th scope="col"></th>
-                </tr>
+            <tr>
+                <th scope="col">Název</th>
+                <th scope="col">Poznámka</th>
+                <th scope="col">Kategorie</th>
+                <th scope="col">Datum a čas vytvoření</th>
+                <th scope="col"></th>
+            </tr>
             </thead>
             <tbody>
             {% for followingPlaylist in followingPlaylists %}
-                <tr>
-                    <td>{{ followingPlaylist.playlist.playlist_name }}</td>
-                    <td>{{ followingPlaylist.playlist.playlist_note }}</td>
-                    <td>{{ followingPlaylist.playlist.playlist_category }}</td>
-                    <td>{{ followingPlaylist.playlist.playlist_create_date|date:"Y-m-d H:i:s" }}</td>
-                    <td>
-                        <form action="{% url 'unfollowPlaylist' followingPlaylist.playlist.playlist_id %}" method="post">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-danger">Přestat sledovat</button>
-                        </form>
-                    </td>
-                </tr>
+            <tr>
+                <td>{{ followingPlaylist.playlist.playlist_name }}</td>
+                <td>{{ followingPlaylist.playlist.playlist_note }}</td>
+                <td>{{ followingPlaylist.playlist.playlist_category }}</td>
+                <td>{{ followingPlaylist.playlist.playlist_create_date|date:"Y-m-d H:i:s" }}</td>
+                <td>
+                    <form action="{% url 'unfollowPlaylist' followingPlaylist.playlist.playlist_id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Přestat sledovat</button>
+                    </form>
+                </td>
+            </tr>
             {% endfor %}
             </tbody>
         </table>
@@ -37,50 +37,49 @@
             <i class="bi bi-plus-lg"></i> Začít sledovat nový playlist
         </button>
         <div id="addPlaylistForm" style="display: none;">
-            <form method="post">
-                {% csrf_token %}
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Název</th>
-                            <th scope="col">Poznámka</th>
-                            <th scope="col">Kategorie</th>
-                            <th scope="col">Vytvořeno uživatelem</th>
-                            <th scope="col">Datum a čas vytvoření</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for playlist in availablePlaylists %}
-                        <tr>
-                            <td>{{ playlist.playlist_name }}</td>
-                            <td>{{ playlist.playlist_note }}</td>
-                            <td>{{ playlist.playlist_category }}</td>
-                            <td>{{ playlist.creator_account.username }}</td>
-                            <td>{{ playlist.playlist_create_date|date:"Y-m-d H:i:s" }}</td>
-                            <td>
-                                <form action="{% url 'followPlaylist' playlist.playlist_id %}" method="post">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-success">Sledovat</button>
-                                </form>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </form>
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Název</th>
+                    <th scope="col">Poznámka</th>
+                    <th scope="col">Kategorie</th>
+                    <th scope="col">Vytvořeno uživatelem</th>
+                    <th scope="col">Datum a čas vytvoření</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for playlist in availablePlaylists %}
+                <tr>
+                    <td>{{ playlist.playlist_name }}</td>
+                    <td>{{ playlist.playlist_note }}</td>
+                    <td>{{ playlist.playlist_category }}</td>
+                    <td>{{ playlist.creator_account.username }}</td>
+                    <td>{{ playlist.playlist_create_date|date:"Y-m-d H:i:s" }}</td>
+                    <td>
+                        <form action="{% url 'followPlaylist' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="playlist_id" value="{{ playlist.playlist_id }}">
+                            <button type="submit" class="btn btn-success">Sledovat</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
 
+
 <script>
-document.getElementById("followPlaylistBtn").addEventListener("click", function() {
-    var form = document.getElementById("addPlaylistForm");
-    if (form.style.display === "none") {
-        form.style.display = "block";
-    } else {
-        form.style.display = "none";
-    }
-});
+    document.getElementById("followPlaylistBtn").addEventListener("click", function() {
+        var form = document.getElementById("addPlaylistForm");
+        if (form.style.display === "none") {
+            form.style.display = "block";
+        } else {
+            form.style.display = "none";
+        }
+    });
 </script>
 {% endblock %}

@@ -23,12 +23,13 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('index', views.index, name='index'),
     path('userLogin', views.userLogin, name='userLogin'),
-    path('userAccount', views.userAccount, name='userAccount'),
+    path('userAccount/', views.userAccount, name='userAccount'),
     path('deletePlaylist/<int:playlist_id>', views.deletePlaylist, name='deletePlaylist'),
     path('createPlaylist', views.createPlaylist, name='createPlaylist'),
     path('followingPlaylists', views.followingPlaylists, name='followingPlaylists'),
     path('unfollowPlaylist/<int:playlist_id>', views.unfollowPlaylist, name='unfollowPlaylist'),
-    path('followPlaylist/<int:playlist_id>', views.followPlaylist, name='followPlaylist'),
+    path('followPlaylist', views.followPlaylist, name='followPlaylist'),
     path('followingAlbums', views.followingAlbums, name='followingAlbums'),
-    path('unfollowAlbum/<int:album_id>', views.unfollowAlbum, name='unfollowAlbum')
+    path('unfollowAlbum/<int:album_id>', views.unfollowAlbum, name='unfollowAlbum'),
+    path('followAlbum', views.followAlbum, name='followAlbum')
 ]

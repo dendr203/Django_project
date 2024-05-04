@@ -3,9 +3,12 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 
 from django.contrib import messages
+import logging
 
 from .models import Category, Account, Playlist, Artist, Album, Song, AccountFollowedAlbums, AccountFollowedPlaylists, \
     AccountFollowedArtists
+
+logger = logging.getLogger(__name__)
 
 
 # Create your views here.
@@ -95,18 +98,16 @@ def unfollowPlaylist(request, playlist_id):
     return redirect('followingPlaylists')
 
 
-def followPlaylist(request, playlist_id):
+def followPlaylist(request):
     logged_in_user = request.session.get('logged_in_user')
+    playlist_id_req = request.POST.get('playlist_id')
     if logged_in_user:
         if request.method == 'POST':
             account = Account.objects.get(username = logged_in_user)
-            playlist = Playlist.objects.get(playlist_id = playlist_id)
-
-            messages.debug(request, account.username)
-            messages.debug(request, playlist.playlist_name)
+            playlist = Playlist.objects.get(playlist_id = playlist_id_req)
             new_follow = AccountFollowedPlaylists(account = account, playlist = playlist)
             new_follow.save()
-            return redirect('userAccount')
+            return redirect('followingPlaylists')
     else:
         return redirect('userLogin')
 
@@ -120,13 +121,18 @@ def followingAlbums(request):
     logged_in_user = request.session.get('logged_in_user')
     if logged_in_user:
         try:
+            logger.info(f"Jsem na stránce followingAlbums")
             account = Account.objects.get(username=logged_in_user)
             following_albums = AccountFollowedAlbums.objects.filter(account=account)
-            return render(request, 'FollowingAlbums.html', {'account': account, 'followingAlbums': following_albums})
+            available_albums = Album.objects.exclude(accountfollowedalbums__account=account)
+            return render(request, 'FollowingAlbums.html', {'account': account,
+                                                            'followingAlbums': following_albums,
+                                                            'availableAlbums': available_albums})
         except Account.DoesNotExist:
             return redirect('userLogin')
     else:
         return redirect('userLogin')
+
 
 
 def unfollowAlbum(request, album_id):
@@ -135,3 +141,16 @@ def unfollowAlbum(request, album_id):
         if logged_in_user:
             AccountFollowedAlbums.objects.filter(account__username=logged_in_user, album_id=album_id).delete()
     return redirect('followingPlaylists')
+
+def followAlbum(request):
+    logged_in_user = request.session.get('logged_in_user')
+    album_id_req = request.POST.get('album_id')
+    if logged_in_user:
+        if request.method == 'POST':
+            f_account = Account.objects.get(username=logged_in_user)
+            f_album = Album.objects.get(album_id = album_id_req)
+            new_follow = AccountFollowedAlbums(account = f_account, album = f_album)
+            new_follow.save()
+            return redirect('followingAlbums')
+    else:
+        return redirect('userLogin')

@@ -22,16 +22,58 @@
                 <td>{{ followingalbums.album.artist.artist_name }}</td>
                 <td>{{ followingalbums.album.album_release_date|date:"Y-m-d" }}</td>
                 <td>
-                <form action="{% url 'unfollowAlbum' followingalbums.album.album_id %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger">Přestat sledovat</button>
-                </form>
-            </td>
+                    <form action="{% url 'unfollowAlbum' followingalbums.album.album_id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Přestat sledovat</button>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
             </tbody>
         </table>
-        <a href="#" class="btn btn-secondary btn-lg btn-block">Začít sledovat nové album</a>
+        <button class="btn btn-secondary btn-lg btn-block" id="followAlbumBtn">
+            <i class="bi bi-plus-lg"></i> Začít sledovat nové album
+        </button>
+        <div id="addAlbumForm" style="display: none;">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Název</th>
+                    <th scope="col">Od umělce</th>
+                    <th scope="col">Datum vydání</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for album in availableAlbums %}
+                <tr>
+                    <td>{{ album.album_name }}</td>
+                    <td>{{ album.artist.artist_name }}</td>
+                    <td>{{ album.album_release_date|date:"Y-m-d" }}</td>
+                    <td>
+                        <form action="{% url 'followAlbum' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="album_id" value="{{ album.album_id }}">
+                            <button type="submit" class="btn btn-success">Sledovat</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
+
+
+<script>
+    document.getElementById("followAlbumBtn").addEventListener("click", function() {
+        var form = document.getElementById("addAlbumForm");
+        if (form.style.display === "none") {
+            form.style.display = "block";
+        } else {
+            form.style.display = "none";
+        }
+    });
+</script>
 {% endblock %}
