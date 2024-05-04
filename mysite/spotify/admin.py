@@ -5,11 +5,8 @@ from .models import (AccountSubType,
                      Category,
                      Playlist,
                      Album,
-                     Song,
                      AccountFollowedAlbums,
-                     SongsInPlaylists,
-                     AccountFollowedPlaylists,
-                     AccountFollowedArtists)
+                     AccountFollowedPlaylists)
 
 admin.site.register(AccountSubType)
 #admin.site.register(Account)
@@ -17,11 +14,8 @@ admin.site.register(Artist)
 admin.site.register(Category)
 admin.site.register(Playlist)
 admin.site.register(Album)
-admin.site.register(Song)
 admin.site.register(AccountFollowedAlbums)
-admin.site.register(SongsInPlaylists)
 admin.site.register(AccountFollowedPlaylists)
-admin.site.register(AccountFollowedArtists)
 
 
 @admin.register(Account)

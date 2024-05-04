@@ -94,15 +94,6 @@ class Album(models.Model):
     def __str__(self):
         return self.album_name
 
-class Song(models.Model):
-    song_id = models.AutoField(primary_key=True)
-    song_name = models.CharField(max_length=30)
-    song_length = models.DurationField(validators=[MinValueValidator(timedelta(seconds=1))], default='00:00:01')
-    album = models.ForeignKey(Album, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.song_name
 
 class AccountFollowedAlbums(models.Model):
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
@@ -111,12 +102,6 @@ class AccountFollowedAlbums(models.Model):
     def __str__(self):
         return f"{self.account.username} sleduje album {self.album.album_name}"
 
-class SongsInPlaylists(models.Model):
-    song = models.ForeignKey(Song, on_delete=models.CASCADE)
-    playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"Píseň {self.song.song_name} je v playlistu {self.playlist.playlist_name}"
 
 class AccountFollowedPlaylists(models.Model):
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
@@ -125,9 +110,3 @@ class AccountFollowedPlaylists(models.Model):
     def __str__(self):
         return f"{self.account.username} sleduje playlist {self.playlist.playlist_name}"
 
-class AccountFollowedArtists(models.Model):
-    account = models.ForeignKey(Account, on_delete=models.CASCADE)
-    artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.account.username} sleduje umělce {self.artist.artist_name}"

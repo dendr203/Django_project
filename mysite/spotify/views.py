@@ -3,12 +3,9 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 
 from django.contrib import messages
-import logging
 
-from .models import Category, Account, Playlist, Artist, Album, Song, AccountFollowedAlbums, AccountFollowedPlaylists, \
-    AccountFollowedArtists
+from .models import AccountSubType, Category, Account, Playlist, Artist, Album, AccountFollowedAlbums, AccountFollowedPlaylists
 
-logger = logging.getLogger(__name__)
 
 
 # Create your views here.
@@ -16,6 +13,8 @@ logger = logging.getLogger(__name__)
 def index(request):
     return render(request, 'Index.html')
 
+def about_index(request):
+    return render(request, 'About_index.html')
 
 def userLogin(request):
     error_message = None
@@ -35,16 +34,20 @@ def userLogin(request):
     return render(request, 'UserLogin.html', {'error_message': error_message})
 
 
+
+
+
+def about_account(request):
+    return render(request, 'About_Account.html')
+
 def userAccount(request):
     logged_in_user = request.session.get('logged_in_user')
     if logged_in_user:
         try:
             account = Account.objects.get(username=logged_in_user)
             created_playlists = Playlist.objects.filter(creator_account=account)
-            categories = Category.objects.all()
             return render(request, 'UserAccount.html', {'account': account,
-                                                        'created_playlists': created_playlists,
-                                                        'categories': categories})
+                                                        'created_playlists': created_playlists})
         except Account.DoesNotExist:
             return redirect('userLogin')
     else:
@@ -57,6 +60,10 @@ def deletePlaylist(request, playlist_id):
         playlist.delete()
     return redirect('userAccount')
 
+
+def openCreatePlaylist(request):
+    categories = Category.objects.all()
+    return render(request, 'CreatePlaylist.html', {'categories':categories})
 
 def createPlaylist(request):
     logged_in_user = request.session.get('logged_in_user')
@@ -72,6 +79,14 @@ def createPlaylist(request):
             return redirect('userAccount')
     else:
         return redirect('userLogin')
+
+
+
+
+
+
+
+
 
 
 def followingPlaylists(request):
@@ -97,6 +112,11 @@ def unfollowPlaylist(request, playlist_id):
             AccountFollowedPlaylists.objects.filter(account__username=logged_in_user, playlist_id=playlist_id).delete()
     return redirect('followingPlaylists')
 
+def openNewFollowPlaylist(request):
+    logged_in_user = request.session.get('logged_in_user')
+    account = Account.objects.get(username=logged_in_user)
+    available_playlists = Playlist.objects.exclude(accountfollowedplaylists__account=account).exclude(creator_account=account)
+    return render(request, 'FollowNewPlaylist.html', {'availablePlaylists':available_playlists})
 
 def followPlaylist(request):
     logged_in_user = request.session.get('logged_in_user')
@@ -121,13 +141,10 @@ def followingAlbums(request):
     logged_in_user = request.session.get('logged_in_user')
     if logged_in_user:
         try:
-            logger.info(f"Jsem na stránce followingAlbums")
             account = Account.objects.get(username=logged_in_user)
             following_albums = AccountFollowedAlbums.objects.filter(account=account)
-            available_albums = Album.objects.exclude(accountfollowedalbums__account=account)
             return render(request, 'FollowingAlbums.html', {'account': account,
-                                                            'followingAlbums': following_albums,
-                                                            'availableAlbums': available_albums})
+                                                            'followingAlbums': following_albums})
         except Account.DoesNotExist:
             return redirect('userLogin')
     else:
@@ -140,7 +157,15 @@ def unfollowAlbum(request, album_id):
         logged_in_user = request.session.get('logged_in_user')
         if logged_in_user:
             AccountFollowedAlbums.objects.filter(account__username=logged_in_user, album_id=album_id).delete()
-    return redirect('followingPlaylists')
+    return redirect('followingAlbums')
+
+
+def openNewFollowAlbum(request):
+    logged_in_user = request.session.get('logged_in_user')
+    account = Account.objects.get(username=logged_in_user)
+    available_albums = Album.objects.exclude(accountfollowedalbums__account=account)
+    return render(request, 'FollowNewAlbum.html', {'availableAlbums':available_albums})
+
 
 def followAlbum(request):
     logged_in_user = request.session.get('logged_in_user')
@@ -154,3 +179,38 @@ def followAlbum(request):
             return redirect('followingAlbums')
     else:
         return redirect('userLogin')
+
+
+
+
+
+def registration(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        name = request.POST.get('name')
+        surname = request.POST.get('surname')
+        phone = request.POST.get('phone')
+        sub_type_id = request.POST.get('sub_type')
+
+        # Získání typu účtu z ID
+        sub_type = AccountSubType.objects.get(pk=sub_type_id)
+
+        # Vytvoření nového účtu
+        new_account = Account.objects.create(
+            username=username,
+            email=email,
+            password=password,
+            name=name,
+            surname=surname,
+            phone=phone,
+            acc_sub_type=sub_type
+        )
+
+        # Přesměrování na přihlašovací stránku
+        return redirect('userLogin')
+
+    else:
+        sub_types = AccountSubType.objects.all()
+        return render(request, 'CreateAccount.html', {'sub_types': sub_types})

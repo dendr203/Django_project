@@ -1,0 +1,36 @@
+{% extends "UserLayout.html" %}
+
+{% block title %}Uživatelé - Spotify{% endblock %}
+
+{% block content %}
+
+<div>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Název</th>
+            <th scope="col">Od umělce</th>
+            <th scope="col">Datum vydání</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for album in availableAlbums %}
+        <tr>
+            <td>{{ album.album_name }}</td>
+            <td>{{ album.artist.artist_name }}</td>
+            <td>{{ album.album_release_date|date:"Y-m-d" }}</td>
+            <td>
+                <form action="{% url 'followAlbum' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="album_id" value="{{ album.album_id }}">
+                    <button type="submit" class="btn btn-success">Sledovat</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

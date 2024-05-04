@@ -9,38 +9,41 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <header class="p-3 bg-dark text-white">
-        <div class="container">
-            <h1>Spotlify</h1>
-        </div>
-    </header>
+<header class="p-3 bg-dark text-white">
+    <div class="container">
+        <h1>Spotlify</h1>
+    </div>
+</header>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'index' %}">Menu</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-                <ul class="navbar-nav ms-auto">
-                    <li>
-                        <a class="nav-link" href="/admin/">Admin</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'index' %}">Menu</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="navbar-nav ms-auto">
+            <li>
+                <a class="nav-link" href="/admin/">Admin</a>
+            </li>
+            <li>
+                <a class="nav-link" href="{% url 'about_index' %}">O aplikaci</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-    <main class="container mt-5">
-        {% block content %}{% endblock %}
-    </main>
+<main class="container mt-5">
+    {% block content %}{% endblock %}
+</main>
 
-    <footer class="p-3 bg-dark text-white fixed-bottom">
-        <div class="container">
-            <p>&copy; 2024 MajneSpotifajne. All rights not reserved.</p>
-        </div>
-    </footer>
+<footer class="p-3 bg-dark text-white fixed-bottom">
+    <div class="container">
+        <p>&copy; 2024 MajneSpotifajne. All rights not reserved.</p>
+    </div>
+</footer>
 
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -33,53 +33,8 @@
             {% endfor %}
             </tbody>
         </table>
-        <button class="btn btn-secondary btn-lg btn-block" id="followPlaylistBtn">
-            <i class="bi bi-plus-lg"></i> Začít sledovat nový playlist
-        </button>
-        <div id="addPlaylistForm" style="display: none;">
-            <table class="table">
-                <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Název</th>
-                    <th scope="col">Poznámka</th>
-                    <th scope="col">Kategorie</th>
-                    <th scope="col">Vytvořeno uživatelem</th>
-                    <th scope="col">Datum a čas vytvoření</th>
-                    <th scope="col"></th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for playlist in availablePlaylists %}
-                <tr>
-                    <td>{{ playlist.playlist_name }}</td>
-                    <td>{{ playlist.playlist_note }}</td>
-                    <td>{{ playlist.playlist_category }}</td>
-                    <td>{{ playlist.creator_account.username }}</td>
-                    <td>{{ playlist.playlist_create_date|date:"Y-m-d H:i:s" }}</td>
-                    <td>
-                        <form action="{% url 'followPlaylist' %}" method="post">
-                            {% csrf_token %}
-                            <input type="hidden" name="playlist_id" value="{{ playlist.playlist_id }}">
-                            <button type="submit" class="btn btn-success">Sledovat</button>
-                        </form>
-                    </td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
+        <a href="{% url 'openNewFollowPlaylist' %}" class="btn btn-secondary btn-lg btn-block">Sledovat nový
+            playlist</a>
     </div>
 </div>
-
-
-<script>
-    document.getElementById("followPlaylistBtn").addEventListener("click", function() {
-        var form = document.getElementById("addPlaylistForm");
-        if (form.style.display === "none") {
-            form.style.display = "block";
-        } else {
-            form.style.display = "none";
-        }
-    });
-</script>
 {% endblock %}

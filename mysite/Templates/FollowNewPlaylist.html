@@ -1,0 +1,41 @@
+{% extends "UserLayout.html" %}
+
+{% block title %}Uživatelé - Spotify{% endblock %}
+
+{% block content %}
+
+
+<div>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Název</th>
+            <th scope="col">Poznámka</th>
+            <th scope="col">Kategorie</th>
+            <th scope="col">Vytvořeno uživatelem</th>
+            <th scope="col">Datum a čas vytvoření</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for playlist in availablePlaylists %}
+        <tr>
+            <td>{{ playlist.playlist_name }}</td>
+            <td>{{ playlist.playlist_note }}</td>
+            <td>{{ playlist.playlist_category }}</td>
+            <td>{{ playlist.creator_account.username }}</td>
+            <td>{{ playlist.playlist_create_date|date:"Y-m-d H:i:s" }}</td>
+            <td>
+                <form action="{% url 'followPlaylist' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="playlist_id" value="{{ playlist.playlist_id }}">
+                    <button type="submit" class="btn btn-success">Sledovat</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

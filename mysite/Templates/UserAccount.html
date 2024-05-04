@@ -34,42 +34,7 @@
             {% endfor %}
             </tbody>
         </table>
-        <button class="btn btn-secondary btn-lg btn-block" id="addPlaylistBtn">
-            <i class="bi bi-plus-lg"></i> Přidat nový playlist
-        </button>
-        <div id="addPlaylistForm" style="display: none;">
-            <form action="{% url 'createPlaylist' %}" method="post">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label for="playlistName" class="form-label"><i class="bi bi-music-note"></i> Název playlistu:</label>
-                    <input type="text" class="form-control" id="playlistName" name="playlistName" style="width: 250px">
-                </div>
-                <div class="mb-3">
-                    <label for="playlistNote" class="form-label"><i class="bi bi-chat-left-text"></i> Poznámka:</label>
-                    <input type="text" class="form-control" id="playlistNote" name="playlistNote" style="width: 250px">
-                </div>
-                <div class="mb-3">
-                    <label for="playlistCategory" class="form-label"><i class="bi bi-list-task"></i> Kategorie:</label>
-                    <select class="form-select" id="playlistCategory" name="playlistCategory" style="width: 250px">
-                        {% for category in categories %}
-                            <option value="{{ category }}">{{ category }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary"><i class="bi bi-check"></i> Vytvořit</button>
-            </form>
-        </div>
+        <a href="{% url 'openCreatePlaylist' %}" class="btn btn-secondary btn-lg btn-block">Vytvořit playlist</a>
     </div>
 </div>
-
-<script>
-document.getElementById("addPlaylistBtn").addEventListener("click", function() {
-    var form = document.getElementById("addPlaylistForm");
-    if (form.style.display === "none") {
-        form.style.display = "block";
-    } else {
-        form.style.display = "none";
-    }
-});
-</script>
 {% endblock %}
