@@ -11,7 +11,7 @@ from .models import AccountSubType, Category, Account, Playlist, Artist, Album, 
 # Create your views here.
 
 def index(request):
-    return render(request, 'Index.html')
+    return render(request, 'index.html')
 
 def about_index(request):
     return render(request, 'About_index.html')
