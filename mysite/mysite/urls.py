@@ -25,6 +25,7 @@ urlpatterns = [
     path('about_index', views.about_index, name='about_index'),
     path('about_account', views.about_account, name='about_account'),
     path('userLogin', views.userLogin, name='userLogin'),
+    path('logout', views.logout, name='logout'),
     path('registration', views.registration, name='registration'),
     path('userAccount/', views.userAccount, name='userAccount'),
     path('deletePlaylist/<int:playlist_id>', views.deletePlaylist, name='deletePlaylist'),

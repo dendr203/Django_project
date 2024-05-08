@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout as auth_logout
 
 from django.contrib import messages
 
@@ -33,12 +33,16 @@ def userLogin(request):
             error_message = "Neplatné přihlašovací údaje. Zkuste to znovu."
     return render(request, 'UserLogin.html', {'error_message': error_message})
 
+def logout(request):
+    auth_logout(request)
+    return redirect('index')
 
 
 
 
 def about_account(request):
     return render(request, 'About_Account.html')
+
 
 def userAccount(request):
     logged_in_user = request.session.get('logged_in_user')
