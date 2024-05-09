@@ -50,8 +50,16 @@ def userAccount(request):
         try:
             account = Account.objects.get(username=logged_in_user)
             created_playlists = Playlist.objects.filter(creator_account=account)
+
+            categories = Category.objects.all()
+            selected_category = request.GET.get('category')
+            if selected_category:
+                created_playlists = created_playlists.filter(playlist_category__category_name=selected_category)
+
             return render(request, 'UserAccount.html', {'account': account,
-                                                        'created_playlists': created_playlists})
+                                                        'created_playlists': created_playlists,
+                                                        'categories': categories,
+                                                        'selected_category': selected_category})
         except Account.DoesNotExist:
             return redirect('userLogin')
     else:
@@ -100,8 +108,15 @@ def followingPlaylists(request):
             account = Account.objects.get(username=logged_in_user)
             following_playlists = AccountFollowedPlaylists.objects.filter(account=account)
             available_playlists = Playlist.objects.exclude(accountfollowedplaylists__account=account).exclude(creator_account=account)
+
+            categories = Category.objects.all()
+            selected_category = request.GET.get('category')
+            if selected_category:
+                following_playlists = following_playlists.filter(playlist__playlist_category__category_name=selected_category)
+
             return render(request, 'FollowingPlaylists.html',{'account': account,
                                                               'followingPlaylists': following_playlists,
+                                                              'categories':categories,
                                                               'availablePlaylists': available_playlists})
         except Account.DoesNotExist:
             return redirect('userLogin')
@@ -147,8 +162,15 @@ def followingAlbums(request):
         try:
             account = Account.objects.get(username=logged_in_user)
             following_albums = AccountFollowedAlbums.objects.filter(account=account)
+
+            artists = Artist.objects.all()
+            selected_artist = request.GET.get('artist')
+            if selected_artist:
+                following_albums = following_albums.filter(album__artist__artist_name=selected_artist)
             return render(request, 'FollowingAlbums.html', {'account': account,
-                                                            'followingAlbums': following_albums})
+                                                            'followingAlbums': following_albums,
+                                                            'artists': artists ,
+                                                            'selected_artist': selected_artist})
         except Account.DoesNotExist:
             return redirect('userLogin')
     else:

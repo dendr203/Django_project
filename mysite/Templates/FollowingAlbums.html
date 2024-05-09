@@ -4,6 +4,28 @@
 
 {% block content %}
 <div class="row">
+    <div class="col-md-4">
+        <form method="GET" action="{% url 'followingAlbums' %}">
+            <div class="form-group">
+                <label for="category-filter">Filtrovat podle umělce:</label>
+                <div class="input-group">
+                    <select class="form-control" id="artist-filter" name="artist">
+                        <option value="" {% if not selected_artist %}selected{% endif %}>Všichni umělci</option>
+                        {% for artist in artists %}
+                            <option value="{{ artist.artist_name }}" {% if artist.artist_name == selected_artist %}selected{% endif %}>{{ artist.artist_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary">Filtrovat</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="row">
     <div class="col">
         <h2>Vaše sledované alba:</h2>
         <table class="table">
@@ -31,8 +53,7 @@
             {% endfor %}
             </tbody>
         </table>
-        <a href="{% url 'openNewFollowAlbum' %}" class="btn btn-secondary btn-lg btn-block">Sledovat nový
-            playlist</a>
+        <a href="{% url 'openNewFollowAlbum' %}" class="btn btn-secondary btn-lg btn-block">Sledovat nové album</a>
     </div>
 </div>
 {% endblock %}

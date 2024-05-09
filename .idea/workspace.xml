@@ -8,9 +8,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/Django_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Django_project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/Templates/UserLayout.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/Templates/UserLayout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/Templates/FollowNewAlbum.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/Templates/FollowNewAlbum.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/Templates/FollowingAlbums.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/Templates/FollowingAlbums.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/Templates/FollowingPlaylists.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/Templates/FollowingPlaylists.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysite/Templates/UserAccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/Templates/UserAccount.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/mysite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/mysite/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysite/spotify/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/spotify/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +40,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/dendr203/Django_project.git&quot;,
-    &quot;accountId&quot;: &quot;1f12cbf0-1785-499d-bac6-3f59eb06250d&quot;
+    &quot;accountId&quot;: &quot;16f5b93e-effb-4e2d-8971-17db40b8808d&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -91,7 +93,6 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.12 (Python)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -110,8 +111,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PY-241.14494.241" />
-        <option value="bundled-python-sdk-0509580d9d50-28c9f5db9ffe-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.14494.241" />
+        <option value="bundled-python-sdk-0509580d9d50-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.14494.241" />
       </set>
     </attachedChunks>
   </component>

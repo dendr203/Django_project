@@ -4,6 +4,28 @@
 
 {% block content %}
 <div class="row">
+    <div class="col-md-4">
+        <form method="GET" action="{% url 'followingPlaylists' %}">
+            <div class="form-group">
+                <label for="category-filter">Filtrovat podle kategorie:</label>
+                <div class="input-group">
+                    <select class="form-control" id="category-filter" name="category">
+                        <option value="" {% if not selected_category %}selected{% endif %}>Všechny kategorie</option>
+                        {% for category in categories %}
+                            <option value="{{ category.category_name }}" {% if category.category_name == selected_category %}selected{% endif %}>{{ category.category_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary">Filtrovat</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="row">
     <div class="col">
         <h2>Vaše sledované playlisty:</h2>
         <table class="table">
