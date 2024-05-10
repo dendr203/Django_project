@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecb8ac23-a251-45e0-b87f-1f854d7103ab" name="Changes" comment="added requirements.txt">
-      <change beforePath="$PROJECT_DIR$/.idea/Django_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Django_project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="ecb8ac23-a251-45e0-b87f-1f854d7103ab" name="Changes" comment="Finall">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/Templates/FollowNewAlbum.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/Templates/FollowNewAlbum.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/Templates/FollowingAlbums.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/Templates/FollowingAlbums.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/Templates/FollowingPlaylists.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/Templates/FollowingPlaylists.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/Templates/UserAccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/Templates/UserAccount.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/spotify/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/spotify/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +183,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714824800163</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Finall">
+      <option name="closed" value="true" />
+      <created>1715237163505</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1715237163505</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,6 +205,7 @@
     <MESSAGE value="Reg user can do everything now" />
     <MESSAGE value="Completed" />
     <MESSAGE value="added requirements.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="added requirements.txt" />
+    <MESSAGE value="Finall" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finall" />
   </component>
 </project>
